@@ -1,17 +1,12 @@
-import expense_tracker.domain.expense as expense
-import datetime
+import expense_tracker.domain.expense as e
 
 
-def create_expense() -> bool:
+def create_expense(amount, category, date, description, repo) -> e.Expense:
     """
     Service function to create a new expense record.
 
-    :return: A boolean indicating success or failure.
+    :return: Expense object
     """
-    amount = float(input("Enter expense amount: "))
-    category = "Food"
-    date = datetime.date.today()
-    description = "Grocery shopping"
-
-    result = expense.create_expense(amount, category, date, description)
+    result = e.create_expense(amount, category, date, description)
+    repo.add(result)
     return result

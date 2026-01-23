@@ -59,3 +59,13 @@ def test_invalid_date():
         assert e.code == "INVALID_DATE"
         assert e.message == "La date fournie n'est pas valide"
         assert e.field == "date"
+
+def test_invalid_date_type():
+    data_test_invalid = data_test.copy()
+    data_test_invalid["date"] = 20240101  # Not a date object
+    try:
+        expense.create_expense(**data_test_invalid)
+    except expense.errors.INVALID_DATE as e:
+        assert e.code == "INVALID_DATE"
+        assert e.message == "La date fournie n'est pas valide"
+        assert e.field == "date"
