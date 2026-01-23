@@ -26,7 +26,7 @@ def create_expense(amount, category, date, description) -> Expense:
     if not isinstance(date, datetime.date):
         raise errors.INVALID_DATE()
 
-    if not isinstance(description, str) or len(description) > 255:
+    if not isinstance(description, str) or len(description) > 255 or len(description) == 0:
         raise errors.INVALID_DESCRIPTION()
 
     return Expense(
