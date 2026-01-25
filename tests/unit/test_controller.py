@@ -1,4 +1,4 @@
-import expense_tracker.controllers.expense_controller as c
+import expense_tracker.controllers.create_expense_controller as c
 import expense_tracker.repositories.repository as r
 import expense_tracker.services.create_expense as s
 import datetime
@@ -18,8 +18,6 @@ def test_valid_create_expense(monkeypatch, capsys):
     repo = r.Repository()
     expense = c.create_expense(s, repo)
 
-    captured = capsys.readouterr()
-    #assert "Error" not in captured.out
     assert expense.amount == 100
     assert expense.category == "Food"
     assert expense.date == datetime.date(2024, 1, 1)

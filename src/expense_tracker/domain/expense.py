@@ -35,3 +35,4 @@ def create_expense(amount, category, date, description) -> Expense:
         date=date,
         description=description,
     )
+
